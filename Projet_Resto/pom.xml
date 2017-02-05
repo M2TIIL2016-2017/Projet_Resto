@@ -4,10 +4,9 @@
 
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>fr.dauburger</groupId>
-	<artifactId>SpringMVCHibernateManyToManyCRUDExample</artifactId>
 	<packaging>war</packaging>
 	<version>1.0.0</version>
-	<name>SpringMVCHibernateWithSpringSecurityExample</name>
+	<name>Dauburger</name>
 
   	<properties>
 		<springframework.version>4.2.5.RELEASE</springframework.version>
@@ -140,4 +139,5 @@
 		</pluginManagement>
 		<finalName>SpringMVCHibernateWithSpringSecurityExample</finalName>
 	</build>
+	<artifactId>Dauburger</artifactId>
 </project>
