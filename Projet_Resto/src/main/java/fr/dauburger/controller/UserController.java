@@ -35,9 +35,9 @@ import fr.dauburger.service.UserService;
 
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("/users")
 @SessionAttributes("roles")
-public class AppController {
+public class UserController {
 
 	@Autowired
 	UserService userService;
@@ -71,10 +71,10 @@ public class AppController {
 	}
 
 
-    @RequestMapping(value = { "/plats"}, method = RequestMethod.GET)
+    @RequestMapping(value = { "/list"}, method = RequestMethod.GET)
     public String listPersons(Model model) {
-        model.addAttribute("plat", new Plat());
-        model.addAttribute("listPlats", this.platService.findAll());
+        model.addAttribute("list", new User());
+        model.addAttribute("listUsers", this.userService.findAllUsers());
         return "plat";
     }
 	/**
