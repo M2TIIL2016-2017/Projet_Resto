@@ -18,39 +18,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 
 @Controller
-@RequestMapping("/plats")
+@RequestMapping("/commandes")
 public class CommandeController {
 
-	@Autowired
-    private PlatService platService;
 	
-    @RequestMapping(value = { "/" , "/plats", }, method = RequestMethod.GET)
-    public String listPersons(Model model) {
-        model.addAttribute("plat", new Plat());
-        model.addAttribute("listPlats", this.platService.findAll());
-        return "plat";
-    }
-
-    //For add and update person both
-    @RequestMapping(value= "/plat/add", method = RequestMethod.POST)
-    public String addPerson(@ModelAttribute("plat") Plat p){
-            this.platService.save(p);
-        return "redirect:/plats";
-
-    }
-
-    @RequestMapping("/remove/{id}")
-    public String removeP(@PathVariable("id") int id){
-        Plat p = this.platService.findOneById(id);
-        this.platService.remove(p);
-        return "redirect:/plats";
-    }
-
-    @RequestMapping("/edit/{id}")
-    public String editPlat(@PathVariable("id") int id, Model model){
-        model.addAttribute("plat", this.platService.findOneById(id));
-        model.addAttribute("listPlats", this.platService.findAll());
-        return "plat";
-    }
 
 }
