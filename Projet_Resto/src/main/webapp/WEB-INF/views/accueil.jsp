@@ -23,7 +23,7 @@
         <li><a href="#">Accueil</a></li>
         <li><a href="#">Notre Carte</a></li>
         <li><a href="#">Livraison</a></li>
-         <li><a href="#">Bonjour ${loggedinuser} </a></li>
+         <li><a href="#"> ${loggedinuser} </a></li>
         
       </ul>
 

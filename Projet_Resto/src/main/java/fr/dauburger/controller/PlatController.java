@@ -26,8 +26,10 @@ public class PlatController {
 	
     @RequestMapping(value = { "/" , "/plats", }, method = RequestMethod.GET)
     public String listPersons(Model model) {
+    	List<Plat> listPlats = platService.findAll();
         model.addAttribute("plat", new Plat());
-        model.addAttribute("listPlats", this.platService.findAll());
+        model.addAttribute("listPlats", listPlats);
+        System.out.println(this.platService.findAll());
         return "plat/plat";
     }
 

@@ -61,7 +61,6 @@
 </form:form>
 <br>
 <h3>plats List</h3>
-<c:if test="${!empty listplats}">
     <table class="tg">
         <tr>
             <th width="80">plat ID</th>
@@ -69,7 +68,7 @@
             <th width="60">Edit</th>
             <th width="60">Delete</th>
         </tr>
-        <c:forEach items="${listplats}" var="plat">
+        <c:forEach items="${listPlats}" var="plat">
             <tr>
                 <td>${plat.id}</td>
                 <td>${plat.nom}</td>
@@ -78,6 +77,5 @@
             </tr>
         </c:forEach>
     </table>
-</c:if>
 </body>
 </html>

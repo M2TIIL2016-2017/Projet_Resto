@@ -207,7 +207,7 @@ public class UserController {
 	/**
 	 * This method returns the principal[user-name] of logged-in user.
 	 */
-	private String getPrincipal(){
+	public static String getPrincipal(){
 		String userName = null;
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
