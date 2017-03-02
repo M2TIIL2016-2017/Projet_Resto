@@ -25,7 +25,7 @@ public class PlatController {
     private PlatService platService;
 	
     @RequestMapping(value = { "/" , "/plats", }, method = RequestMethod.GET)
-    public String listPersons(Model model) {
+    public String listPlats(Model model) {
     	List<Plat> listPlats = platService.findAll();
         model.addAttribute("plat", new Plat());
         model.addAttribute("listPlats", listPlats);
@@ -33,11 +33,20 @@ public class PlatController {
         return "plat/plat";
     }
 
+  //For add and update person both
+    @RequestMapping(value= "/plat/add", method = RequestMethod.GET)
+    public String addPlat(Model model){
+    	 model.addAttribute("plat", new Plat());
+        return "plat/add";
+
+    }
+    
     //For add and update person both
     @RequestMapping(value= "/plat/add", method = RequestMethod.POST)
-    public String addPerson(@ModelAttribute("plat") Plat p){
+    public String addPlat(@ModelAttribute("plat") Plat p){
+    
             this.platService.save(p);
-        return "redirect:/plats";
+        return "redirect:/plats/";
 
     }
 
@@ -45,7 +54,7 @@ public class PlatController {
     public String removeP(@PathVariable("id") int id){
         Plat p = this.platService.findOneById(id);
         this.platService.remove(p);
-        return "redirect:/plats";
+        return "redirect:/";
     }
 
     @RequestMapping("/edit/{id}")
