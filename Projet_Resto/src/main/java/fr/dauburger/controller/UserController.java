@@ -15,7 +15,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenBasedRememberMeServices;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
@@ -25,14 +24,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-import fr.dauburger.model.Plat;
 import fr.dauburger.model.User;
 import fr.dauburger.model.UserProfile;
-import fr.dauburger.service.PlatService;
 import fr.dauburger.service.UserProfileService;
 import fr.dauburger.service.UserService;
-
-
 
 @Controller
 @RequestMapping("/users")
@@ -54,10 +49,7 @@ public class UserController {
 	@Autowired
 	AuthenticationTrustResolver authenticationTrustResolver;
 	
-	@Autowired
-    private PlatService platService;
 	
-    
 	/**
 	 * This method will list all existing users.
 	 */
@@ -70,13 +62,6 @@ public class UserController {
 		return "userslist";
 	}
 
-
-    @RequestMapping(value = { "/list"}, method = RequestMethod.GET)
-    public String listPersons(Model model) {
-        model.addAttribute("list", new User());
-        model.addAttribute("listUsers", this.userService.findAllUsers());
-        return "plat";
-    }
 	/**
 	 * This method will provide the medium to add a new user.
 	 */
@@ -183,6 +168,43 @@ public class UserController {
 	}
 	
 	/**
+	 * This method handles Access-Denied redirect.
+	 */
+	@RequestMapping(value = "/Access_Denied", method = RequestMethod.GET)
+	public String accessDeniedPage(ModelMap model) {
+		model.addAttribute("loggedinuser", getPrincipal());
+		return "accessDenied";
+	}
+
+	/**
+	 * This method handles login GET requests.
+	 * If users is already logged-in and tries to goto login page again, will be redirected to list page.
+	 */
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	public String loginPage() {
+		if (isCurrentAuthenticationAnonymous()) {
+			return "login";
+	    } else {
+	    	return "redirect:/list";  
+	    }
+	}
+
+	/**
+	 * This method handles logout requests.
+	 * Toggle the handlers if you are RememberMe functionality is useless in your app.
+	 */
+	@RequestMapping(value="/logout", method = RequestMethod.GET)
+	public String logoutPage (HttpServletRequest request, HttpServletResponse response){
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		if (auth != null){    
+			//new SecurityContextLogoutHandler().logout(request, response, auth);
+			persistentTokenBasedRememberMeServices.logout(request, response, auth);
+			SecurityContextHolder.getContext().setAuthentication(null);
+		}
+		return "redirect:/login?logout";
+	}
+
+	/**
 	 * This method returns the principal[user-name] of logged-in user.
 	 */
 	private String getPrincipal(){
@@ -195,6 +217,14 @@ public class UserController {
 			userName = principal.toString();
 		}
 		return userName;
+	}
+	
+	/**
+	 * This method returns true if users is already authenticated [logged-in], else false.
+	 */
+	private boolean isCurrentAuthenticationAnonymous() {
+	    final Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+	    return authenticationTrustResolver.isAnonymous(authentication);
 	}
 
 
