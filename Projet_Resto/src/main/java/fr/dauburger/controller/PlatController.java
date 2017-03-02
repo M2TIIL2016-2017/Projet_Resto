@@ -28,7 +28,7 @@ public class PlatController {
     public String listPersons(Model model) {
         model.addAttribute("plat", new Plat());
         model.addAttribute("listPlats", this.platService.findAll());
-        return "plat";
+        return "plat/plat";
     }
 
     //For add and update person both
