@@ -15,6 +15,6 @@ public class DefaultController {
 	 @RequestMapping(value = { "/" , "/accueil", }, method = RequestMethod.GET)
 	    public String pageAccueil(ModelMap model) {
 		 model.addAttribute("loggedinuser", UserController.getPrincipal());
-	        return "accueil";
+	        return "/accueil/accueil";
 	    }
 }
