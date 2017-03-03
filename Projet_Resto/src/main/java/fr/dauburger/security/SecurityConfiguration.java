@@ -37,10 +37,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
-				.antMatchers("/", "/list")
-				.access("hasRole('USER') or hasRole('ADMIN')")
 				
-				.antMatchers("/newuser/**", "/delete-user-*")
+				.antMatchers("/admin/**", "/admin/**")
 				.access("hasRole('ADMIN')")
 				
 				/* Exemple de blocage d'accès
@@ -48,8 +46,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 				.access("hasRole('ADMIN')")
 				*/
 				
-				.antMatchers("/edit-user-*")
-				.access("hasRole('ADMIN')")
 				
 				.and().formLogin().loginPage("/login")
 				.loginProcessingUrl("/login").usernameParameter("ssoId").passwordParameter("password").and()
