@@ -15,7 +15,7 @@ public class Plat {
     @Column
     private String detailFiche;
 
-    @Id
+    @Id @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer id;
 
 

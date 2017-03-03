@@ -26,12 +26,22 @@ public class OptionController {
     private OptionService optionService;
 	
     @RequestMapping(value = { "/" , "/options", }, method = RequestMethod.GET)
-    public String listPersons(Model model) {
+    public String listOptions(Model model) {
+    	List<Option> listOptions = optionService.findAll();
         model.addAttribute("option", new Option());
-        model.addAttribute("listOptions", this.optionService.findAll());
-        return "option";
+        model.addAttribute("listOptions", listOptions);
+        System.out.println(this.optionService.findAll());
+        return "option/option";
     }
 
+    //For add and update person both
+    @RequestMapping(value= "/option/add", method = RequestMethod.GET)
+    public String addPlat(Model model){
+    	 model.addAttribute("option", new Option());
+        return "option/add";
+
+    }
+    
     //For add and update person both
     @RequestMapping(value= "/option/add", method = RequestMethod.POST)
     public String addPerson(@ModelAttribute("option") Option o){
@@ -44,7 +54,7 @@ public class OptionController {
     public String removeP(@PathVariable("id") int id){
         Option o = this.optionService.findOneById(id);
         this.optionService.remove(o);
-        return "redirect:/options";
+        return "redirect:/";
     }
 
     @RequestMapping("/edit/{id}")

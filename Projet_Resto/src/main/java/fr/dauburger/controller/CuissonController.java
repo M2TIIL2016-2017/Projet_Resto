@@ -1,6 +1,7 @@
 package fr.dauburger.controller;
 
 import fr.dauburger.model.Cuisson;
+import fr.dauburger.model.Plat;
 import fr.dauburger.model.User;
 import fr.dauburger.service.CuissonService;
 
@@ -26,11 +27,21 @@ public class CuissonController {
 	
     @RequestMapping(value = { "/" , "/cuissons", }, method = RequestMethod.GET)
     public String listPerson(Model model) {
+    	List<Cuisson> listCuissons = cuissonService.findAll();
         model.addAttribute("cuisson", new Cuisson());
-        model.addAttribute("listCuissons", this.cuissonService.findAll());
-        return "cuisson";
+        model.addAttribute("listCuissons", listCuissons);
+        System.out.println(this.cuissonService.findAll());
+        return "cuisson/cuisson";
     }
 
+  //For add and update person both
+    @RequestMapping(value= "/cuisson/add", method = RequestMethod.GET)
+    public String addCuisson(Model model){
+    	 model.addAttribute("cuisson", new Cuisson());
+        return "cuisson/add";
+
+    }
+    
     //For add and update person both
     @RequestMapping(value= "/cuisson/add", method = RequestMethod.POST)
     public String addPerson(@ModelAttribute("cuisson") Cuisson p){
@@ -38,14 +49,21 @@ public class CuissonController {
         return "redirect:/cuissons";
 
     }
-
+/*
     @RequestMapping("/remove/{id}")
     public String removeP(@PathVariable("id") int id){
         Cuisson p = this.cuissonService.findOneById(id);
         this.cuissonService.remove(p);
         return "redirect:/cuissons";
     }
-
+*/
+    @RequestMapping("/remove/{id}")
+    public String removeP(@PathVariable("id") int id){
+        Cuisson p = this.cuissonService.findOneById(id);
+        this.cuissonService.remove(p);
+        return "redirect:/";
+    }
+    
     @RequestMapping("/edit/{id}")
     public String editCuisson(@PathVariable("id") int id, Model model){
         model.addAttribute("cuisson", this.cuissonService.findOneById(id));
