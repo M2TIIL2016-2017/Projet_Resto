@@ -8,12 +8,12 @@ public class Routes {
     public static final String home = "/accueil";
     public static final String login = "/login";
     public static final String logout = "/logout";
-    public static final String plat = "/plats";
+    public static final String plat = "/plats/";
 
-    public static final String add = "/add";
-    public static final String edit = "/edit";
-    public static final String del ="/del";
-    public static final String list = "/list";
+    public static final String add = "add";
+    public static final String edit = "edit";
+    public static final String del ="del";
+    public static final String list = "list";
     
     private static void setRoutes()
     {       

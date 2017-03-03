@@ -25,7 +25,7 @@ public class PlatController extends AbstractController {
 	@Autowired
     private PlatService platService;
 	
-    @RequestMapping("/")
+    @RequestMapping("")
     public String listPlats(ModelMap model) {
     	preRender(model); 
     	List<Plat> listPlats = platService.findAll();
@@ -47,7 +47,7 @@ public class PlatController extends AbstractController {
     public String addPlat(@ModelAttribute("plat") Plat p){
     
             this.platService.save(p);
-        return "redirect:" + Routes.getRoute("platlist");
+        return "redirect:" + Routes.plat + "/";
 
     }
 
@@ -57,7 +57,7 @@ public class PlatController extends AbstractController {
         Plat p = this.platService.findOneById(id);
         
         this.platService.remove(p);
-        return "redirect:" + Routes.getRoute("platlist");
+        return "redirect:" + Routes.plat;
     }
 
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
