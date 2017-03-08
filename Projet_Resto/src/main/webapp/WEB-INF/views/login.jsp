@@ -10,13 +10,46 @@
 
 <!-- CSS  -->
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-<link href="<c:url value='/static/css/materialize.css' />" type="text/css" rel="stylesheet" media="screen,projection" />
-<link href="<c:url value='/static/css/style.css' />" type="text/css" rel="stylesheet" media="screen,projection" />
-
+<%-- <link href="<c:url value='/static/css/materialize.css' />" type="text/css" rel="stylesheet" media="screen,projection" />
+ --%>
+ <link href="<c:url value='/static/css/bootstrap.css' />" type="text/css" rel="stylesheet"/>
+ <link href="<c:url value='/static/css/signin.css' />" type="text/css" rel="stylesheet"/>
+<%-- <link href="<c:url value='/static/css/style.css' />" type="text/css" rel="stylesheet" media="screen,projection" />
+ --%>
+ 
+<!--  <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link href="../bootstrap/css/signin.css" rel="stylesheet"> -->
 </head>
 
 <body class="grey">
-	<div class="container">
+<%-- <jsp:include page="header/header.jsp" /> --%>
+
+    <div class="container">
+
+      <form class="form-signin">
+        <h2 class="form-signin-heading">Connexion</h2>
+        <div class="input-group">
+        	<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+        	<label for=""inputUser" class="sr-only">Nom d'utilisateur</label>
+	        <input type="text" id="inputUser" class="form-control" placeholder="Nom d'utilisateur" required autofocus>
+        
+        </div>
+        <div class="input-group">
+        	<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+	        <label for="inputPassword" class="sr-only">Mot de passe</label>
+	        <input type="password" id="inputPassword" class="form-control" placeholder="Mot de passe" required>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" value="remember-me"> Se souvenir de moi
+          </label>
+        </div>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Connexion</button>
+      </form>
+
+    </div>
+
+	<%-- <div class="container">
 		<div class="row">
 			<div class="col s12 m6 offset-m3">
 				<div class="card">
@@ -62,12 +95,12 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> --%>
 	
  <!--  Scripts-->
   <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-  <script type="text/javascript" src="<c:url value='/static/js/materialize.js' />"></script>
-  <script type="text/javascript" src="<c:url value='/static/js/init.js' />"></script>
-
+<%--   <script type="text/javascript" src="<c:url value='/static/js/materialize.js' />"></script>
+  <script type="text/javascript" src="<c:url value='/static/js/init.js' />"></script> --%>
+<script type="text/javascript" src="<c:url value='/static/js/bootstrap.min.js' />"></script>
 </body>
 </html>
