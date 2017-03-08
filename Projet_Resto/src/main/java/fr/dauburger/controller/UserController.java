@@ -28,6 +28,7 @@ import fr.dauburger.model.User;
 import fr.dauburger.model.UserProfile;
 import fr.dauburger.service.UserProfileService;
 import fr.dauburger.service.UserService;
+import fr.dauburger.utils.Routes;
 
 @Controller
 @RequestMapping("/users")
@@ -50,18 +51,29 @@ public class UserController {
 	AuthenticationTrustResolver authenticationTrustResolver;
 	
 	
-	/**
+		/**
 	 * This method will list all existing users.
 	 */
 	@RequestMapping(value = { "/", "/list" }, method = RequestMethod.GET)
 	public String listUsers(ModelMap model) {
 
 		List<User> users = userService.findAllUsers();
+		
 		model.addAttribute("users", users);
 		model.addAttribute("loggedinuser", getPrincipal());
-		return "userslist";
+		return "userslist";	
 	}
 
+	
+	@RequestMapping(value = { "/", "myhome" })
+	public String myAccount(ModelMap model) {
+		User unUser = userService.findBySSO(getPrincipal());
+		model.addAttribute("loggedinuser", unUser);
+		return Routes.getRoute("userhome");
+	}
+
+	
+	
 	/**
 	 * This method will provide the medium to add a new user.
 	 */
@@ -102,7 +114,7 @@ public class UserController {
 		
 		userService.saveUser(user);
 
-		model.addAttribute("success", "User " + user.getFirstName() + " "+ user.getLastName() + " registered successfully");
+		model.addAttribute("success", "User " + user.getPrenom() + " "+ user.getNom() + " registered successfully");
 		model.addAttribute("loggedinuser", getPrincipal());
 		//return "success";
 		return "registrationsuccess";
@@ -143,7 +155,7 @@ public class UserController {
 
 		userService.updateUser(user);
 
-		model.addAttribute("success", "User " + user.getFirstName() + " "+ user.getLastName() + " updated successfully");
+		model.addAttribute("success", "User " + user.getPrenom() + " "+ user.getNom() + " updated successfully");
 		model.addAttribute("loggedinuser", getPrincipal());
 		return "registrationsuccess";
 	}

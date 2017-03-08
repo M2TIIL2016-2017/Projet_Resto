@@ -9,6 +9,7 @@ public class Routes {
     public static final String login = "/login";
     public static final String logout = "/logout";
     public static final String plat = "/plats/";
+    public static final String user = "/users/";
 
     public static final String add = "add";
     public static final String edit = "edit";
@@ -22,7 +23,7 @@ public class Routes {
             routes = new HashMap<String, String>();
 
             routes.put("home", home);
-           
+            routes.put("userhome", user + "/myAccount");
             setRoutesEntity("plat",Routes.plat);
             
             

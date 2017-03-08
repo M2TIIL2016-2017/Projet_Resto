@@ -17,7 +17,8 @@
     Add a plat
 </h1>
 
-<c:url var="editAction" value="${routes.platedit}" ></c:url>
+<c:url var="editAction" value="${routes.platedit}
+**4" ></c:url>
 
 <form:form action="${addAction}" commandName="plat">
     <table>
