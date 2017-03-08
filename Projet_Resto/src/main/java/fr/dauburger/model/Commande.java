@@ -9,11 +9,8 @@ import javax.persistence.Table;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
-/**
- * Created by Zboubtilar on 02/02/2017.
- */
 @Entity
-@Table(name="commande")
+@Table(name="commande_commande")
 public class Commande {
 
 	@Id

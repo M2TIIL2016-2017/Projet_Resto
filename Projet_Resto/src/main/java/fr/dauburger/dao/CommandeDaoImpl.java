@@ -23,7 +23,7 @@ public class CommandeDaoImpl extends AbstractDao<Integer, Commande> implements C
 
     @SuppressWarnings("unchecked")
     public List<Commande> findAll() {
-    	Criteria criteria = createEntityCriteria().addOrder(Order.asc("nom"));
+    	Criteria criteria = createEntityCriteria().addOrder(Order.asc("idCommande"));
 		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);//To avoid duplicates.
 		List<Commande> commandes = (List<Commande>) criteria.list();
         return commandes;

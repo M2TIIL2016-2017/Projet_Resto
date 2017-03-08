@@ -1,17 +1,10 @@
 package fr.dauburger.dao;
 
 import fr.dauburger.model.Cuisson;
-import fr.dauburger.model.Plat;
-import fr.dauburger.model.User;
-import fr.dauburger.service.PlatService;
-import fr.dauburger.dao.PlatDao;
 
 import org.hibernate.Criteria;
 import org.hibernate.Hibernate;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Order;
-import org.hibernate.criterion.Restrictions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
