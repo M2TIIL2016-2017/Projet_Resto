@@ -1,5 +1,6 @@
 package fr.dauburger.controller;
 
+import fr.dauburger.model.Cuisson;
 import fr.dauburger.model.Plat;
 import fr.dauburger.model.User;
 import fr.dauburger.service.PlatService;
@@ -20,7 +21,5 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 @RequestMapping("/commandes")
 public class CommandeController {
-
 	
-
 }

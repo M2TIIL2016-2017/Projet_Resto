@@ -33,12 +33,16 @@ public class User implements Serializable{
 	private String password;
 		
 	@NotEmpty
-	@Column(name="FIRST_NAME", nullable=false)
-	private String firstName;
+	@Column(name="PRENOM", nullable=false)
+	private String prenom;
 
 	@NotEmpty
-	@Column(name="LAST_NAME", nullable=false)
-	private String lastName;
+	@Column(name="NOM", nullable=false)
+	private String nom;
+	
+	@NotEmpty
+	@Column(name="TELEPHONE", nullable=false)
+	private int telephone;
 
 	@NotEmpty
 	@Column(name="EMAIL", nullable=false)
@@ -73,22 +77,6 @@ public class User implements Serializable{
 
 	public void setPassword(String password) {
 		this.password = password;
-	}
-
-	public String getFirstName() {
-		return firstName;
-	}
-
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
-	public String getLastName() {
-		return lastName;
-	}
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
 	}
 
 	public String getEmail() {
@@ -138,17 +126,37 @@ public class User implements Serializable{
 		return true;
 	}
 
-	/*
-	 * DO-NOT-INCLUDE passwords in toString function.
-	 * It is done here just for convenience purpose.
-	 */
-	@Override
-	public String toString() {
-		return "User [id=" + id + ", ssoId=" + ssoId + ", password=" + password
-				+ ", firstName=" + firstName + ", lastName=" + lastName
-				+ ", email=" + email + "]";
+	public String getPrenom() {
+		return prenom;
 	}
 
+	public void setPrenom(String prenom) {
+		this.prenom = prenom;
+	}
+
+	public String getNom() {
+		return nom;
+	}
+
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+
+	public int getTelephone() {
+		return telephone;
+	}
+
+	public void setTelephone(int telephone) {
+		this.telephone = telephone;
+	}
+
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", ssoId=" + ssoId + ", prenom=" + prenom + ", nom=" + nom + ", telephone="
+				+ telephone + ", email=" + email + ", userProfiles=" + userProfiles + "]";
+	}
+
+	
 
 	
 }

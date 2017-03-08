@@ -4,7 +4,7 @@
 <%@ page session="false" %>
 <html>
 <head>
-    <title>Ajouter un plat</title>
+    <title>Ajouter une commande</title>
     <style type="text/css">
         .tg  {border-collapse:collapse;border-spacing:0;border-color:#ccc;}
         .tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#fff;}
@@ -14,15 +14,14 @@
 </head>
 <body>
 <h1>
-    Add a plat
+    Add a commande
 </h1>
 
-<c:url var="editAction" value="${routes.platedit}
-**4" ></c:url>
+<c:url var="addAction" value="/cuissons/cuisson/add" ></c:url>
 
-<form:form action="${addAction}" commandName="plat">
+<form:form action="${addAction}" commandName="cuisson">
     <table>
-        <c:if test="${!empty plat.nom}">
+        <c:if test="${!empty commande.nom}">
             <tr>
                 <td>
                     <form:label path="id">
@@ -42,7 +41,7 @@
                 </form:label>
             </td>
             <td>
-                <form:input path="nom" value="${plat.nom}"/>
+                <form:input path="nom" />
             </td>
         </tr>
         
@@ -53,7 +52,7 @@
                 </form:label>
             </td>
             <td>
-                <form:input path="detailFiche" value="${plat.detailFiche}"/>
+                <form:input path="detailFiche" />
             </td>
         </tr>
         
@@ -61,11 +60,11 @@
       
         <tr>
             <td colspan="2">
-                <c:if test="${!empty plat.nom}">
+                <c:if test="${!empty cuisson.nom}">
                     <input type="submit"
                            value="<spring:message text="Edit plat"/>" />
                 </c:if>
-                <c:if test="${empty plat.nom}">
+                <c:if test="${empty cuisson.nom}">
                     <input type="submit"
                            value="<spring:message text="Add plat"/>" />
                 </c:if>

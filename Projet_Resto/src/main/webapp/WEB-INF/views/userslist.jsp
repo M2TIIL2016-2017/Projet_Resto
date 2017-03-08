@@ -37,8 +37,8 @@
 	    		<tbody>
 				<c:forEach items="${users}" var="user">
 					<tr>
-						<td>${user.firstName}</td>
-						<td>${user.lastName}</td>
+						<td>${user.nom}</td>
+						<td>${user.prenom}</td>
 						<td>${user.email}</td>
 						<td>${user.ssoId}</td>
 					    <sec:authorize access="hasRole('ADMIN') or hasRole('DBA')">
