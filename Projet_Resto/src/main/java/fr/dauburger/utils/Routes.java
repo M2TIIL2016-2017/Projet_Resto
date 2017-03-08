@@ -9,6 +9,7 @@ public class Routes {
     public static final String login = "/login";
     public static final String logout = "/logout";
     public static final String plat = "/plats/";
+    public static final String commande = "/commandes/";
 
     public static final String add = "add";
     public static final String edit = "edit";
@@ -24,7 +25,7 @@ public class Routes {
             routes.put("home", home);
            
             setRoutesEntity("plat",Routes.plat);
-            
+            setRoutesEntity("commande",Routes.commande);
             
         }
     }   
