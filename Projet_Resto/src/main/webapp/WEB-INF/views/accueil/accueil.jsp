@@ -16,7 +16,8 @@
  
 </head>
 <body>
-  <nav class="white" role="navigation">
+<jsp:include page="../header/header.jsp" />
+<%--   <nav class="white" role="navigation">
     <div class="nav-wrapper container">
       <a id="logo-container" href="#" class="brand-logo">Logo</a>
       <ul class="right hide-on-med-and-down">
@@ -35,7 +36,7 @@
       </ul>
       <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
     </div>
-  </nav>
+  </nav> --%>
 
   <div id="index-banner" class="parallax-container">
     <div class="section no-pad-bot">

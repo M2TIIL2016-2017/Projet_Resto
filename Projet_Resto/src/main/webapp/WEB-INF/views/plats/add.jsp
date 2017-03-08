@@ -11,8 +11,18 @@
         .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#f0f0f0;}
         .tg .tg-4eph{background-color:#f9f9f9}
     </style>
+    
+<!-- CSS  -->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link href="<c:url value='/static/css/materialize.css' />" type="text/css" rel="stylesheet" media="screen,projection" />
+<link href="<c:url value='/static/css/style.css' />" type="text/css" rel="stylesheet" media="screen,projection" />
+
 </head>
 <body>
+
+<jsp:include page="../header/header.jsp" />
+
+
 <h1>
     Add a plat
 </h1>
@@ -68,6 +78,27 @@
         </tr>
     </table>
 </form:form>
+
+<h1>
+    Liste des plats
+</h1>
+
+    <table class="tg">
+        <tr>
+            <th width="80">plat ID</th>
+            <th width="120">plat Name</th>
+            <th width="60">Edit</th>
+            <th width="60">Delete</th>
+        </tr>
+        <c:forEach items="${listPlats}" var="plat">
+            <tr>
+                <td>${plat.id}</td>
+                <td>${plat.nom}</td>
+                <td><a href="<c:url value='${routes.platedit}/${plat.id}' />" >Edit</a></td>
+                <td><a href="<c:url value='${routes.platdel}/${plat.id}' />" >Delete</a></td>
+            </tr>
+        </c:forEach>
+    </table>
 <br>
 </body>
 </html>
