@@ -20,5 +20,5 @@ public interface UserService {
 	List<User> findAllUsers(); 
 	
 	boolean isUserSSOUnique(Integer id, String sso);
-
+	boolean isUserExist(User user);
 }

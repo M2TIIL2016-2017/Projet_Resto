@@ -64,6 +64,10 @@ public class UserServiceImpl implements UserService{
 		return dao.findAllUsers();
 	}
 
+	public boolean isUserExist(User user) {
+		return findById(user.getId())!=null;
+	}
+	
 	public boolean isUserSSOUnique(Integer id, String sso) {
 		User user = findBySSO(sso);
 		return ( user == null || ((id != null) && (user.getId() == id)));
