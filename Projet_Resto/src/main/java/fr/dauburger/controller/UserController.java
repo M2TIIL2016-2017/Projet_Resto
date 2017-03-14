@@ -39,7 +39,8 @@ import fr.dauburger.utils.Routes;
 
 @RestController
 @RequestMapping("/users")
-@SessionAttributes("roles")
+/*
+@SessionAttributes("roles")*/
 public class UserController {
 
 	@Autowired
@@ -61,6 +62,7 @@ public class UserController {
 		/**
 	 * This method will list all existing users.
 	 */
+	@ModelAttribute
 	@RequestMapping(value = { "/", "/list" }, method = RequestMethod.GET)
 	public String listUsers(ModelMap model) {
 
@@ -68,7 +70,7 @@ public class UserController {
 		
 		model.addAttribute("users", users);
 		model.addAttribute("loggedinuser", getPrincipal());
-		return "userslist";	
+		return "list";	
 	}
 
 	
@@ -251,12 +253,11 @@ public class UserController {
 	//-------------------Retrieve All Users--------------------------------------------------------
     
     @RequestMapping(value = "/listRest", method = RequestMethod.GET)
-    public ResponseEntity<List<User>> listAllUsers() {
+    public List<User> listAllUsers() {
+    		    
         List<User> users = userService.findAllUsers();
-        if(users.isEmpty()){
-            return new ResponseEntity<List<User>>(HttpStatus.NO_CONTENT);//You many decide to return HttpStatus.NOT_FOUND
-        }
-        return new ResponseEntity<List<User>>(users, HttpStatus.OK);
+
+        return users;
     }
  
  

@@ -2,6 +2,7 @@ package fr.dauburger.service;
 
 import java.util.List;
 
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -12,6 +13,7 @@ import fr.dauburger.model.UserProfile;
 
 @Service("userProfileService")
 @Transactional
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"}) 
 public class UserProfileServiceImpl implements UserProfileService{
 	
 	@Autowired
